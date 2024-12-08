@@ -50,12 +50,11 @@
             <ng-container *ngFor="let child of article.children">
               <li>
                 <div class="tree-node">
-                  <mat-icon>image</mat-icon>
-                  <strong>{{ child.title }}</strong>
+                  <img [src]="child.abstract" alt="Image" class="child-image" />
                 </div>
                 <div class="node-details">
-                  <div>Section: {{ child.section }}</div>
-                  <div>Abstract: {{ child.abstract }}</div>
+                  <strong>{{ child.title }}</strong>
+                  <div>{{ child.section }}</div>
                 </div>
               </li>
             </ng-container>

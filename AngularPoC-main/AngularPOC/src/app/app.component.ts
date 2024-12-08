@@ -25,7 +25,7 @@ export class AppComponent {
       return;
     }
 
-    const apiKey = '18G0sleY3Axwg5hxDpCpovXh6BtQAQDA'; //this.apiKeyForm.value.apiKey;
+    const apiKey = this.apiKeyForm.value.apiKey;
 
     this.http
       .post(
@@ -54,9 +54,9 @@ export class AppComponent {
       expanded: false, // Add expanded property for toggle
       children: article.multimedia
         ? article.multimedia.map((media: any) => ({
-            title: `Image - ${media.caption || 'No Caption'}`,
+            title: `${media.caption || 'No Caption'}`,
             section: media.format,
-            abstract: `Type: ${media.type}, Dimensions: ${media.width}x${media.height}`,
+            abstract: media.url,
             expanded: false,
           }))
         : [],
