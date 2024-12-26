@@ -9,6 +9,7 @@
         [ngClass]="{
           'is-invalid': submitted && apiKeyForm.controls['apiKey'].invalid
         }"
+        maxlength="32"
       />
       <mat-error
         *ngIf="submitted && apiKeyForm.controls['apiKey'].hasError('required')"
