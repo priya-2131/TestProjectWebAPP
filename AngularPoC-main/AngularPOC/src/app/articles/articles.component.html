@@ -20,11 +20,6 @@
       >
         API Key must be at least 16 characters long.
       </mat-error>
-      <mat-error
-        *ngIf="submitted && apiKeyForm.controls['apiKey'].hasError('maxlength')"
-      >
-        API Key must be at least 16 characters long.
-      </mat-error>
     </mat-form-field>
 
     <button

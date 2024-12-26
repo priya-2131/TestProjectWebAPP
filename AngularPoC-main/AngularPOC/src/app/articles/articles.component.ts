@@ -16,12 +16,11 @@ export class ArticlesComponent {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.apiKeyForm = this.formBuilder.group({
-      apiKey: ['', [Validators.required]],
+      apiKey: ['', [Validators.required, Validators.minLength(16)]],
     });
   }
 
   onSubmit() {
-    debugger;
     this.submitted = true;
     if (this.apiKeyForm.invalid) {
       return;
@@ -41,7 +40,6 @@ export class ArticlesComponent {
         },
         error: (error) => {
           if (error.status === 401) {
-            debugger;
             alert('Invalid API Key. Please provide a valid key.');
           } else {
             alert('An error occurred while processing your request.');
