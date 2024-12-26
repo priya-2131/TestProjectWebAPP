@@ -17,9 +17,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ArticlesComponent } from './articles/articles.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ArticlesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

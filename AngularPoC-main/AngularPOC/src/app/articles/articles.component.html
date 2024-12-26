@@ -1,0 +1,71 @@
+<div class="api-key-container">
+  <form [formGroup]="apiKeyForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>API Key</mat-label>
+      <input
+        matInput
+        formControlName="apiKey"
+        placeholder="Enter your API key"
+        [ngClass]="{
+          'is-invalid': submitted && apiKeyForm.controls['apiKey'].invalid
+        }"
+      />
+      <mat-error
+        *ngIf="submitted && apiKeyForm.controls['apiKey'].hasError('required')"
+      >
+        API Key is required.
+      </mat-error>
+      <mat-error
+        *ngIf="submitted && apiKeyForm.controls['apiKey'].hasError('minlength')"
+      >
+        API Key must be at least 16 characters long.
+      </mat-error>
+      <mat-error
+        *ngIf="submitted && apiKeyForm.controls['apiKey'].hasError('maxlength')"
+      >
+        API Key must be at least 16 characters long.
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="apiKeyForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+
+  <div class="table-container" *ngIf="articles">
+    <ul class="tree">
+      <ng-container *ngFor="let article of articles">
+        <li>
+          <div (click)="toggleExpand(article)" class="tree-node">
+            <mat-icon>
+              {{ article.expanded ? "expand_more" : "chevron_right" }}
+            </mat-icon>
+            <strong>{{ article.title }}</strong>
+          </div>
+          <div class="node-details">
+            <div>Section: {{ article.section }}</div>
+            <div>Abstract: {{ article.abstract }}</div>
+          </div>
+          <ul *ngIf="article.expanded" class="children">
+            <ng-container *ngFor="let child of article.children">
+              <li>
+                <div class="tree-node">
+                  <img [src]="child.abstract" alt="Image" class="child-image" />
+                </div>
+                <div class="node-details">
+                  <strong>{{ child.title }}</strong>
+                  <div>{{ child.section }}</div>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
